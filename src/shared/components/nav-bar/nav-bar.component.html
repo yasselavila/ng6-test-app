@@ -19,7 +19,7 @@
          (click)="toggleNavIfOpen()">
 
       <div class="collapse-content bg-dark" (click)="stopPropagation($event)">
-        <div *ngIf="offCanvas" class="header">
+        <div *ngIf="offCanvas && navOpen" class="header d-none d-xl-block">
           <img *ngIf="logo" [src]="logo" [alt]="title || ''">
           <h1 *ngIf="title" [innerText]="title"></h1>
         </div>
