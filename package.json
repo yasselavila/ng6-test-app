@@ -6,6 +6,7 @@
   "scripts": {
     "start": "npm run serve",
     "ng": "ng",
+    "ngc": "ngc",
     "serve": "ng serve",
     "test": "ng test",
     "lint": "ng lint",
