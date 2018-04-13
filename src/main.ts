@@ -1,13 +1,18 @@
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, CompilerOptions } from '@angular/core';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
-import { environment } from '@app/env';
+import { environment as env } from '@app/env';
 import { RootModule } from '@app/root';
 
-if (environment.production) {
+if (env.production) {
   enableProdMode();
 }
 
+const bootstrapOptions: CompilerOptions|any = {
+  preserveWhitespaces: false,
+  // XXX: ngZone: 'noop', /* NgZone | 'zone.js' | 'noop' */
+};
+
 platformBrowserDynamic()
-  .bootstrapModule(RootModule)
-  .catch(err => console.log(err));
+  .bootstrapModule(RootModule, bootstrapOptions)
+  .catch((err: Error) => console.error(err));
