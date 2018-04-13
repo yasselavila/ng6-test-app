@@ -35,6 +35,9 @@
             "scripts": []
           },
           "configurations": {
+            "development": {
+              "aot": true
+            },
             "production": {
               "fileReplacements": [
                 {
