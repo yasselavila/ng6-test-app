@@ -29,7 +29,7 @@
             ],
             "styles": [
               {
-                "input": "src/styles.scss"
+                "input": "src/scss/main.scss"
               }
             ],
             "scripts": []
