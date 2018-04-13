@@ -5,7 +5,6 @@ import { Component, Input, ChangeDetectorRef } from '@angular/core';
  */
 
 @Component({
-  moduleId: module.id,
   selector: 'app-change-detection',
   template: ''
 })

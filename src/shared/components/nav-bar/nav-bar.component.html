@@ -1,0 +1,44 @@
+<nav id="main-menu" role="navigation" class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <button type="button"
+            class="navbar-toggler"
+            [attr.data-toggle]="'collapse'"
+            [attr.aria-label]="'Alternar menu'"
+            [attr.aria-expanded]="!!navOpen ? 'true' : 'false'"
+            (click)="toggleNav()">
+      &#9776;
+    </button>
+
+    <a class="navbar-brand" routerLink="/" [title]="title">
+      <img *ngIf="logo" [src]="logo" [alt]="title || ''">
+      <h1 *ngIf="title" [innerText]="title"></h1>
+    </a>
+
+    <div class="collapse navbar-collapse"
+         [ngClass]="{ 'off-canvas': !!offCanvas, 'active': navOpen }"
+         (click)="toggleNavIfOpen()">
+
+      <div class="collapse-content bg-dark" (click)="stopPropagation($event)">
+        <div *ngIf="offCanvas" class="header">
+          <img *ngIf="logo" [src]="logo" [alt]="title || ''">
+          <h1 *ngIf="title" [innerText]="title"></h1>
+        </div>
+        <ul class="navbar-nav" (click)="toggleNavIfOpen()">
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              Inicio
+            </a>
+          </li>
+          <!-- ITEMS -->
+          <li *ngFor="let navItem of navItems" class="nav-item">
+            <a class="nav-link"
+               routerLinkActive="active"
+               [routerLink]="navItem.routeData"
+               [innerText]="navItem.text">
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
