@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Base */
+@import "./base";
+
+/* Bootstrap */
+/* - Custom configurations */
+@import "./variables";
+/* - Include the full framework ... */
+// @import "~bootstrap/scss/bootstrap";
+/* - ... or just what you need */
+@import "./bootstrap";
+
+/* Custom */
+@import "./generic";
+@import "./header";
+@import "./content";
+@import "./footer";

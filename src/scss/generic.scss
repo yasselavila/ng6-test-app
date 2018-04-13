@@ -1,0 +1,32 @@
+body {
+  /* Min width of 236px; */
+  min-width: 14.75rem !important;
+  overflow-x: hidden;
+
+  app-root,
+  #app-root {
+    display: block !important;
+    width: 100%;
+  }
+}
+
+/* Grid */
+
+#header-container,
+#content-container,
+#footer-container {
+  @include make-container();
+  @include make-container-max-widths();
+}
+
+/* Headings */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-top: 0;
+  font-weight: lighter;
+}

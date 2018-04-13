@@ -1,0 +1,26 @@
+footer {
+  margin: 1rem 0;
+  font-size: .75rem;
+
+  hr {
+    margin: 0 0 1rem 0 !important;
+    border: 0;
+    height: .0625rem;
+    background-color: #ddd;
+  }
+
+  abbr {
+    text-decoration: none !important;
+  }
+
+  @include media-breakpoint-down(sm) {
+    text-align: center;
+    font-size: .7rem;
+
+    .copyright {
+      span {
+        display: block;
+      }
+    }
+  }
+}
