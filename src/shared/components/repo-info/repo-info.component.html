@@ -1,5 +1,7 @@
 <div class="card">
   <div class="card-header">
+    <i class="github-circled" title="Github"></i>
+
     <a title="Ver en Github"
        rel="noopener"
        target="_blank"
@@ -11,11 +13,11 @@
     <h5 class="card-title" [innerText]="data.description || '(Sin descripción)'"></h5>
 
     <span class="badge badge-success">
-      Stars
+      <i class="star" title="Me gusta"></i>
       {{ data.stargazers_count }}
     </span>
     <span class="badge badge-info">
-      Forks
+      <i class="fork" title="Forks"></i>
       {{ data.forks_count }}
     </span>
 
@@ -24,12 +26,12 @@
        class="badge badge-danger"
        rel="noopener"
        target="_blank"
-       [href]="data.license.url || '#'"
-       [innerText]="data.license.spdx_id || data.license.key">
+       [href]="data.license.url || '#'">
+      <i class="github-circled" title="Github"></i>
+      {{ data.license.spdx_id || data.license.key }}
     </a>
   </div>
   <div class="card-footer text-muted">
-    Actualizado hace
-    <span [innerText]="data.updated_at | timeAgo"></span>
+    Actualizado hace {{ data.updated_at | timeAgo }}
   </div>
 </div>
