@@ -6,6 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { SERVICES } from './services';
 import { COMPONENTS } from './components';
+import { PIPES } from './pipes';
 
 /* Do not specify providers for modules that might be imported by a lazy loaded module */
 
@@ -22,13 +23,15 @@ import { COMPONENTS } from './components';
     HttpClientModule,
     RouterModule,
     ReactiveFormsModule,
-    ...COMPONENTS
+    ...COMPONENTS,
+    ...PIPES
   ],
   entryComponents: [
     ...COMPONENTS
   ],
   declarations: [
-    ...COMPONENTS
+    ...COMPONENTS,
+    ...PIPES
   ]
 })
 export class SharedModule {
