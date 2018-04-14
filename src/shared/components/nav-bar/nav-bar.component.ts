@@ -1,6 +1,7 @@
 import {
   Component,
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   EventEmitter,
   Output,
   Input,
@@ -8,6 +9,7 @@ import {
 } from '@angular/core';
 
 import { ChangeDetectionComponent } from '../change-detection/change-detection.component';
+import { SearchEmitter } from '../../providers';
 
 @Component({
   selector: 'app-nav-bar',
@@ -62,6 +64,13 @@ export class NavBarComponent extends ChangeDetectionComponent {
     return this._navItems;
   }
 
+  public constructor(
+    protected cd: ChangeDetectorRef,
+    private searchEmitter: SearchEmitter
+  ) {
+    super(cd);
+  }
+
   @HostListener('window:resize', ['$event'])
   public onWindowResize(event?: any): void {
     this.toggleNavIfOpen();
@@ -83,5 +92,16 @@ export class NavBarComponent extends ChangeDetectionComponent {
     if (event && !!event.stopPropagation) {
       event.stopPropagation();
     }
+  }
+
+  public normalizeSearchQuery(text: string): string {
+    return text.replace(/[^a-z0-9\-_]/i, '');
+  }
+
+  public onSearch(query: string): void {
+    this.searchEmitter.change
+      .emit(
+        this.normalizeSearchQuery(query)
+      );
   }
 }

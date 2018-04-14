@@ -50,9 +50,19 @@ export class RepoListComponent extends ChangeDetectionComponent {
 
     this.githubApiService.getUserRepos(this._username)
       .subscribe(
-        (repos: Repo[]) => this.repos = repos,
-        (err: any) => this.error = true,
-        () => this.detectChanges(true)
+        (repos: Repo[]) => {
+          this.repos = repos;
+          this.detectChanges(true);
+        },
+        (err: any) => {
+          if (err && err.status && (404 === err.status)) {
+            this.repos = [];
+          } else {
+            this.error = true;
+          }
+
+          this.detectChanges(true);
+        }
       );
   }
 }

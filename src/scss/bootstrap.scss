@@ -22,10 +22,10 @@
 // @import "~bootstrap/scss/mixins/visibility";
 /* - Components */
 // @import "~bootstrap/scss/mixins/alert";
-@import "~bootstrap/scss/mixins/buttons";
-@import "~bootstrap/scss/mixins/caret";
+// @import "~bootstrap/scss/mixins/buttons";
+// @import "~bootstrap/scss/mixins/caret";
 // @import "~bootstrap/scss/mixins/pagination";
-@import "~bootstrap/scss/mixins/lists";
+// @import "~bootstrap/scss/mixins/lists";
 // @import "~bootstrap/scss/mixins/list-group";
 // @import "~bootstrap/scss/mixins/nav-divider";
 // @import "~bootstrap/scss/mixins/forms";
@@ -57,11 +57,11 @@
 // @import "~bootstrap/scss/_code";
 // @import "~bootstrap/scss/_images";
 // @import "~bootstrap/scss/_tables";
-// @import "~bootstrap/scss/_forms";
-// @import "~bootstrap/scss/_buttons";
+@import "~bootstrap/scss/_forms";
+@import "~bootstrap/scss/_buttons";
 // @import "~bootstrap/scss/_dropdown";
 // @import "~bootstrap/scss/_button-group";
-// @import "~bootstrap/scss/_input-group";
+@import "~bootstrap/scss/_input-group";
 // @import "~bootstrap/scss/_custom-forms";
 @import "~bootstrap/scss/_nav";
 @import "~bootstrap/scss/_navbar";

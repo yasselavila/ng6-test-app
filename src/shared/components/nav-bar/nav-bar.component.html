@@ -1,4 +1,6 @@
-<nav id="main-menu" role="navigation" class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+<nav id="main-menu"
+     role="navigation"
+     class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
     <button type="button"
             class="navbar-toggler"
@@ -25,11 +27,14 @@
         </div>
         <ul class="navbar-nav" (click)="toggleNavIfOpen()">
           <li class="nav-item">
-            <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+            <a class="nav-link"
+               routerLink="/"
+               routerLinkActive="active"
+               [routerLinkActiveOptions]="{ exact: true }">
               Inicio
             </a>
           </li>
-          <!-- ITEMS -->
+          <!-- NAV ITEMS -->
           <li *ngFor="let navItem of navItems" class="nav-item">
             <a class="nav-link"
                routerLinkActive="active"
@@ -38,6 +43,24 @@
             </a>
           </li>
         </ul>
+
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <i class="github-circled"></i>
+          </div>
+          <input #query
+                 type="text"
+                 class="form-control"
+                 placeholder="yasselavila"
+                 (keyup.enter)="onSearch(query.value)">
+          <div class="input-group-prepend">
+            <button type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="onSearch(query.value)">
+              <i class="search"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

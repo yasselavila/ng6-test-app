@@ -2,9 +2,9 @@ import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
-import { ReactiveFormsModule } from '@angular/forms';
 
 import { SERVICES } from './services';
+import { PROVIDERS } from './providers';
 import { COMPONENTS } from './components';
 import { PIPES } from './pipes';
 
@@ -15,14 +15,12 @@ import { PIPES } from './pipes';
     /* This imports are required in pages */
     CommonModule,
     HttpClientModule,
-    RouterModule,
-    ReactiveFormsModule
+    RouterModule
   ],
   exports: [
     CommonModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule,
     ...COMPONENTS,
     ...PIPES
   ],
@@ -39,7 +37,8 @@ export class SharedModule {
     return {
       ngModule: SharedModule,
       providers: [
-        ...SERVICES
+        ...SERVICES,
+        ...PROVIDERS
       ]
     };
   }
