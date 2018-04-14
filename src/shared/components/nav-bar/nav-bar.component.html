@@ -1,7 +1,10 @@
-<nav id="main-menu"
-     role="navigation"
-     class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
+<nav role="navigation" class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
+    <a class="navbar-brand" routerLink="/" [title]="title">
+      <img *ngIf="logo" [src]="logo" [alt]="title || ''">
+      <h1 *ngIf="title" [innerText]="title"></h1>
+    </a>
+
     <button type="button"
             class="navbar-toggler"
             [attr.data-toggle]="'collapse'"
@@ -11,57 +14,55 @@
       &#9776;
     </button>
 
-    <a class="navbar-brand" routerLink="/" [title]="title">
-      <img *ngIf="logo" [src]="logo" [alt]="title || ''">
-      <h1 *ngIf="title" [innerText]="title"></h1>
-    </a>
-
-    <div class="collapse navbar-collapse"
+    <div class="collapse navbar-collapse bg-dark"
          [ngClass]="{ 'off-canvas': !!offCanvas, 'active': navOpen }"
-         (click)="toggleNavIfOpen()">
+         (click)="toggleNavIfOpen($event)">
 
-      <div class="collapse-content bg-dark" (click)="stopPropagation($event)">
-        <div *ngIf="offCanvas && navOpen" class="header d-none d-xl-block">
-          <img *ngIf="logo" [src]="logo" [alt]="title || ''">
-          <h1 *ngIf="title" [innerText]="title"></h1>
-        </div>
-        <ul class="navbar-nav" (click)="toggleNavIfOpen()">
-          <li class="nav-item">
-            <a class="nav-link"
-               routerLink="/"
-               routerLinkActive="active"
-               [routerLinkActiveOptions]="{ exact: true }">
-              Inicio
-            </a>
-          </li>
-          <!-- NAV ITEMS -->
-          <li *ngFor="let navItem of navItems" class="nav-item">
-            <a class="nav-link"
-               routerLinkActive="active"
-               [routerLink]="navItem.routeData"
-               [innerText]="navItem.text">
-            </a>
-          </li>
-        </ul>
+      <div *ngIf="offCanvas && navOpen" class="header d-none d-xl-block">
+        <img *ngIf="logo" [src]="logo" [alt]="title || ''">
+        <h1 *ngIf="title" [innerText]="title"></h1>
+      </div>
 
+      <ul class="navbar-nav mr-auto" (click)="toggleNavIfOpen()">
+        <li class="nav-item">
+          <a class="nav-link"
+             routerLink="/"
+             routerLinkActive="active"
+             [routerLinkActiveOptions]="{ exact: true }">
+            Inicio
+          </a>
+        </li>
+        <!-- NAV ITEMS -->
+        <li *ngFor="let navItem of navItems" class="nav-item">
+          <a class="nav-link"
+             routerLinkActive="active"
+             [routerLink]="navItem.routeData"
+             [innerText]="navItem.text">
+          </a>
+        </li>
+      </ul>
+
+      <form class="form-inline mr-sm-2 float-right search-bar">
         <div class="input-group">
           <div class="input-group-prepend">
-            <i class="github-circled"></i>
+            <span class="input-group-text" id="basic-addon1">
+              <i class="github-circled"></i>
+            </span>
           </div>
           <input #query
-                 type="text"
+                 type="search"
                  class="form-control"
                  placeholder="yasselavila"
                  (keyup.enter)="onSearch(query.value)">
-          <div class="input-group-prepend">
+          <div class="input-group-append">
             <button type="button"
-                    class="btn btn-outline-secondary"
+                    class="btn btn-secondary"
                     (click)="onSearch(query.value)">
               <i class="search"></i>
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
 </nav>

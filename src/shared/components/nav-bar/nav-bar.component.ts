@@ -98,7 +98,9 @@ export class NavBarComponent extends ChangeDetectionComponent {
     return text.replace(/[^a-z0-9\-_]/i, '');
   }
 
-  public onSearch(query: string): void {
+  public onSearch(query: string, event?: any): void {
+    this.stopPropagation(event);
+
     this.searchEmitter.change
       .emit(
         this.normalizeSearchQuery(query)
