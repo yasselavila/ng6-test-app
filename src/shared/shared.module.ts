@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { SERVICES } from './services';
 import { PROVIDERS } from './providers';
 import { COMPONENTS } from './components';
+import { DIRECTIVES } from './directives';
 import { PIPES } from './pipes';
 
 /* Do not specify providers for modules that might be imported by a lazy loaded module */
@@ -22,6 +23,7 @@ import { PIPES } from './pipes';
     HttpClientModule,
     RouterModule,
     ...COMPONENTS,
+    ...DIRECTIVES,
     ...PIPES
   ],
   entryComponents: [
@@ -29,6 +31,7 @@ import { PIPES } from './pipes';
   ],
   declarations: [
     ...COMPONENTS,
+    ...DIRECTIVES,
     ...PIPES
   ]
 })

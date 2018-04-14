@@ -1,12 +1,31 @@
+<ng-template #searchBarTpl>
+  <div class="form-inline mr-sm-2 float-sm-right search-bar">
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text" id="basic-addon1">
+          <i class="github-circled"></i>
+        </span>
+      </div>
+      <input #query
+             type="search"
+             class="form-control"
+             placeholder="yasselavila"
+             (keyup.enter)="onSearch(query.value, $event)">
+      <div class="input-group-append">
+        <button type="button"
+                class="btn btn-secondary"
+                (click)="onSearch(query.value, $event)">
+          <i class="search"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
 <nav role="navigation" class="navbar fixed-top navbar-expand-sm navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" routerLink="/" [title]="title">
-      <img *ngIf="logo" [src]="logo" [alt]="title || ''">
-      <h1 *ngIf="title" [innerText]="title"></h1>
-    </a>
-
     <button type="button"
-            class="navbar-toggler"
+            class="navbar-toggler float-left"
             [attr.data-toggle]="'collapse'"
             [attr.aria-label]="'Alternar menu'"
             [attr.aria-expanded]="!!navOpen ? 'true' : 'false'"
@@ -14,14 +33,23 @@
       &#9776;
     </button>
 
-    <div class="collapse navbar-collapse bg-dark"
-         [ngClass]="{ 'off-canvas': !!offCanvas, 'active': navOpen }"
-         (click)="toggleNavIfOpen($event)">
+    <a class="navbar-brand" routerLink="/" [title]="title">
+      <img *ngIf="logo" [src]="logo" [alt]="title || ''">
+      <h1 *ngIf="title" [innerText]="title"></h1>
+    </a>
 
-      <div *ngIf="offCanvas && navOpen" class="header d-none d-xl-block">
+    <!-- TODO: (clickOutside)="navOpen && toggleNav()" -->
+    <div class="collapse navbar-collapse bg-dark"
+         [ngClass]="{ 'off-canvas': !!offCanvas, 'active': navOpen }">
+
+      <div *ngIf="offCanvas" class="header d-block d-sm-none">
         <img *ngIf="logo" [src]="logo" [alt]="title || ''">
-        <h1 *ngIf="title" [innerText]="title"></h1>
+        <h1 *ngIf="title" class="h1" [innerText]="title"></h1>
       </div>
+
+      <ng-template [ngIf]="navOpen">
+        <ng-container *ngTemplateOutlet="searchBarTpl"></ng-container>
+      </ng-template>
 
       <ul class="navbar-nav mr-auto" (click)="toggleNavIfOpen()">
         <li class="nav-item">
@@ -42,27 +70,9 @@
         </li>
       </ul>
 
-      <form class="form-inline mr-sm-2 float-right search-bar">
-        <div class="input-group">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon1">
-              <i class="github-circled"></i>
-            </span>
-          </div>
-          <input #query
-                 type="search"
-                 class="form-control"
-                 placeholder="yasselavila"
-                 (keyup.enter)="onSearch(query.value)">
-          <div class="input-group-append">
-            <button type="button"
-                    class="btn btn-secondary"
-                    (click)="onSearch(query.value)">
-              <i class="search"></i>
-            </button>
-          </div>
-        </div>
-      </form>
+      <ng-template [ngIf]="!navOpen">
+        <ng-container *ngTemplateOutlet="searchBarTpl"></ng-container>
+      </ng-template>
     </div>
   </div>
 </nav>

@@ -10,4 +10,54 @@
       }
     }
   }
+
+  @media (max-width: 575.98px) {
+    .navbar-toggler {
+      border: 0 !important;
+      color: #fff !important;
+      opacity: .7 !important;
+      transition: opacity .3s ease-in-out !important;
+
+      &:active,
+      &:hover,
+      &:focus {
+        outline: none;
+        opacity: 1 !important;
+      }
+    }
+
+    .navbar-brand {
+      margin: 0 auto;
+    }
+
+    .collapse {
+      .header {
+        padding: .5rem 0 1rem 0;
+        color: rgba(255, 255, 255, 0.8);
+      }
+
+      .navbar-nav {
+        margin: 1rem 0 !important;
+      }
+
+      /* Off-canvas */
+      &.off-canvas {
+        display: block !important;
+        position: fixed !important;
+        top: 3.5rem !important;
+        left: -580px !important;
+        padding: 0 1rem !important;
+        min-height: 100% !important;
+        height: 100% !important;
+        min-width: 80% !important;
+        width: auto !important;
+        background-color: #343a40 !important;
+        transition: left .3s ease-in !important;
+
+        &.active {
+          left: 0 !important;
+        }
+      }
+    }
+  }
 }

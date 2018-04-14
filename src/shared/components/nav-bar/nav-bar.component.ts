@@ -105,5 +105,7 @@ export class NavBarComponent extends ChangeDetectionComponent {
       .emit(
         this.normalizeSearchQuery(query)
       );
+
+    this.toggleNavIfOpen();
   }
 }
