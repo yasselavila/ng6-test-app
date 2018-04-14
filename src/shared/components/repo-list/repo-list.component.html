@@ -1,0 +1,10 @@
+<ng-template #loadingTpl>
+  <app-spinner big></app-spinner>
+</ng-template>
+
+<div *ngIf="repos || error; else loadingTpl">
+  <div *ngIf="error" class="info-text">Ha ocurrido un <b>ERROR</b> desconocido.</div>
+  <div *ngIf="!repos.length" class="info-text">No hay datos para mostrar.</div>
+
+  <app-repo-info *ngFor="let repo of repos" [data]="repo"></app-repo-info>
+</div>
