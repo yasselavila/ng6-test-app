@@ -7,8 +7,10 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
+  const expectedTitle: string = 'Mi Github';
+
+  it(`should display '${expectedTitle}' as title`, () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('mi Github');
+    expect(page.getParagraphText()).toEqual(expectedTitle);
   });
 });
