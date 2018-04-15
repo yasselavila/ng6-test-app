@@ -31,13 +31,7 @@ describe('[Page] Home', () => {
     fixture.detectChanges();
   });
 
-  const expectedTitle: string = 'Welcome!';
-
   it('should create the component', () => {
     expect(cmp).toBeTruthy();
-  });
-
-  it('should render title in a h2 tag', () => {
-    expect(element.querySelector('h2').textContent).toContain(expectedTitle);
   });
 });

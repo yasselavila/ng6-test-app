@@ -1,5 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
+import { CD_TESTING_PROVIDERS } from '@app/shared/testing/change-detection';
+
 import { ChangeDetectionComponent } from './change-detection.component';
 
 describe('[Shared] Component: Change Detection', () => {
@@ -9,6 +11,9 @@ describe('[Shared] Component: Change Detection', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        ...CD_TESTING_PROVIDERS
+      ],
       declarations: [
         ChangeDetectionComponent
       ]

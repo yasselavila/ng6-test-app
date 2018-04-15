@@ -10,17 +10,30 @@
  */
 
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { Component } from '@angular/core';
 
-import { ClickOutsideDirective } from './click-outside.component';
+import { ClickOutsideDirective } from './click-outside.directive';
 
-describe('[Lib: Material-dashboard] Directive: Click Outside', () => {
-  let fixture: ComponentFixture<ClickOutsideDirective>;
-  let directive: ClickOutsideDirective;
+@Component({
+  selector: 'test-component',
+  template: '<div (clickOutside)="myEvent()"></div>'
+})
+class TestComponent {
+  public myEvent(): void {
+  }
+}
+
+describe('[Shared] Directive: Click Outside', () => {
+  let fixture: ComponentFixture<TestComponent>;
+  let cmp: TestComponent;
   let element: any;
+  let des: any;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
+        TestComponent,
         ClickOutsideDirective
       ]
     })
@@ -28,14 +41,16 @@ describe('[Lib: Material-dashboard] Directive: Click Outside', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ClickOutsideDirective);
-    directive = fixture.componentInstance;
+    fixture = TestBed.createComponent(TestComponent);
+    cmp = fixture.componentInstance;
     element = fixture.nativeElement;
 
     fixture.detectChanges();
+
+    des = fixture.debugElement.queryAll(By.directive(ClickOutsideDirective));
   });
 
   it('should create the directive', () => {
-    expect(directive).toBeTruthy();
+    expect(des.length).toBe(1);
   });
 });

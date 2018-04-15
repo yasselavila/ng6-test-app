@@ -1,15 +1,20 @@
-import { PLATFORM_ID } from '@angular/core';
+
 import { TestBed, async } from '@angular/core/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
 
 import { GithubApiService } from './github-api.service';
 
-describe('[Shared] Service: Platform', () => {
+describe('[Shared] Service: Github API', () => {
   let githubApiService: GithubApiService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
+      imports: [
+        HttpClientTestingModule
+      ],
       providers: [
-        { provide: GithubApiService, useClass: GithubApiService, deps: [PLATFORM_ID] }
+        { provide: GithubApiService, useClass: GithubApiService, deps: [HttpClient] }
       ]
     });
 
@@ -18,10 +23,5 @@ describe('[Shared] Service: Platform', () => {
 
   it('should create the service', async(() => {
     expect(githubApiService).toBeTruthy();
-  }));
-
-  it('can check platform type', async(() => {
-    const isServer: boolean = githubApiService.isServer();
-    expect(isServer).toEqual(false);
   }));
 });

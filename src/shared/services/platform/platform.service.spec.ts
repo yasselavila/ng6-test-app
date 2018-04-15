@@ -1,5 +1,5 @@
-import { PLATFORM_ID } from '@angular/core';
 import { TestBed, async } from '@angular/core/testing';
+import { PLATFORM_ID } from '@angular/core';
 
 import { PlatformService } from './platform.service';
 

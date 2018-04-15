@@ -1,5 +1,7 @@
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 
+import { CD_TESTING_PROVIDERS } from '@app/shared/testing/change-detection';
+
 import { SpinnerComponent } from './spinner.component';
 
 describe('[Shared] Component: Spinner', () => {
@@ -9,6 +11,9 @@ describe('[Shared] Component: Spinner', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      providers: [
+        ...CD_TESTING_PROVIDERS
+      ],
       declarations: [
         SpinnerComponent
       ]

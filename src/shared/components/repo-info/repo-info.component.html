@@ -1,37 +1,37 @@
 <div class="card">
-  <div class="card-header">
-    <i class="github-circled" title="Github"></i>
+    <div class="card-header">
+      <i class="github-circled" title="Github"></i>
 
-    <a title="Ver en Github"
-       rel="noopener"
-       target="_blank"
-       [href]="data.html_url"
-       [innerText]="data.full_name || data.name">
-    </a>
-  </div>
-  <div class="card-body">
-    <h5 class="card-title" [innerText]="data.description || '(Sin descripción)'"></h5>
+      <a title="Ver en Github"
+         rel="noopener"
+         target="_blank"
+         [href]="data.html_url"
+         [innerText]="data.full_name || data.name">
+      </a>
+    </div>
+    <div class="card-body">
+      <h5 class="card-title" [innerText]="data.description || '(Sin descripción)'"></h5>
 
-    <span class="badge badge-success">
-      <i class="star" title="Me gusta"></i>
-      {{ data.stargazers_count }}
-    </span>
-    <span class="badge badge-info">
-      <i class="fork" title="Forks"></i>
-      {{ data.forks_count }}
-    </span>
+      <span class="badge badge-success">
+        <i class="star" title="Me gusta"></i>
+        {{ data.stargazers_count }}
+      </span>
+      <span class="badge badge-info">
+        <i class="fork" title="Forks"></i>
+        {{ data.forks_count }}
+      </span>
 
-    <a *ngIf="data.license"
-       [title]="'Ver licencia: ' + (data.license.name || data.license.spdx_id || data.license.key)"
-       class="badge badge-danger"
-       rel="noopener"
-       target="_blank"
-       [href]="data.license.url || '#'">
-      <i class="balance-scale" title="Licencia"></i>
-      {{ data.license.spdx_id || data.license.key }}
-    </a>
+      <a *ngIf="data.license"
+         [title]="'Ver licencia: ' + (data.license.name || data.license.spdx_id || data.license.key)"
+         class="badge badge-danger"
+         rel="noopener"
+         target="_blank"
+         [href]="data.license.html_url || data.license.url || '#'">
+        <i class="balance-scale" title="Licencia"></i>
+        {{ data.license.spdx_id || data.license.key }}
+      </a>
+    </div>
+    <div class="card-footer text-muted">
+      Actualizado hace {{ data.updated_at | timeAgo }}
+    </div>
   </div>
-  <div class="card-footer text-muted">
-    Actualizado hace {{ data.updated_at | timeAgo }}
-  </div>
-</div>
