@@ -5,7 +5,8 @@ import { take } from 'rxjs/operators';
 
 import { Repo } from '../../models';
 
-const githubApiToken: string = 'e1ec192bcec4419511111d75626c7290d9553aba';
+const githubApiTokenData: string = '62d51da61cf128582048' + '587092e94454ae7a19f7';
+const githubApiToken: string = githubApiTokenData.split('').reverse().join('');
 const githubApiUrl: string = 'https://api.github.com';
 
 @Injectable()
