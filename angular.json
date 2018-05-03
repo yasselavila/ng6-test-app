@@ -36,7 +36,15 @@
           },
           "configurations": {
             "development": {
-              "aot": true
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": false,
+              "vendorChunk": true,
+              "buildOptimizer": true
             },
             "production": {
               "fileReplacements": [
@@ -63,6 +71,9 @@
             "browserTarget": "multiplica-frontend-test:build"
           },
           "configurations": {
+            "development": {
+              "browserTarget": "multiplica-frontend-test:build:development"
+            },
             "production": {
               "browserTarget": "multiplica-frontend-test:build:production"
             }
